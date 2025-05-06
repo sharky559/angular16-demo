@@ -1,12 +1,10 @@
 import { inject, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {
   FilterParams,
-  TransactionListMockData,
   TransactionItem,
   TransactionItemDetail,
-  TransactionItemMockData,
 } from '../../model/transaction.model';
 import { Pageable } from '../../model/public.model';
 
@@ -17,7 +15,6 @@ export class TransactionService {
   getTransactionList(
     params: FilterParams
   ): Observable<Pageable<TransactionItem>> {
-    return of(TransactionListMockData);
     return this._http.get<Pageable<TransactionItem>>('/api/transactionList', {
       params: { ...params },
     });
@@ -26,7 +23,6 @@ export class TransactionService {
   getTransactionDetail(
     transactionId: number
   ): Observable<TransactionItemDetail> {
-    return of(TransactionItemMockData);
     return this._http.get<TransactionItemDetail>('/api/transactionDetail', {
       params: { transactionId },
     });

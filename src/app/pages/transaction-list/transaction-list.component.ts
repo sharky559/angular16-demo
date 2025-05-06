@@ -103,7 +103,6 @@ export class TransactionListComponent implements OnInit {
   }
 
   viewDetail(item: TransactionItem): void {
-    console.log(item);
     this._modal.create({
       nzTitle: '制单详情',
       nzFooter: null,

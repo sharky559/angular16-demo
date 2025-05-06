@@ -1,4 +1,4 @@
-<div class="p-[24px]">
+<div class="p-[48px]">
   <div class="flex justify-between items-center">
     <form [formGroup]="transactionConditionsForm" class="flex gap-[12px]">
       <nz-form-item>
@@ -71,9 +71,9 @@
         <th>付款人信息</th>
         <th>收款人信息</th>
         <th>收款人类型</th>
-        <th nz-right [nzSortFn]="sortPayAmount">付款金额</th>
+        <th nzRight [nzSortFn]="sortPayAmount">付款金额</th>
         <th>付款币种</th>
-        <th nz-right>
+        <th nzRight>
           收款金额
           <span
             class="align-middle"
@@ -84,7 +84,7 @@
         </th>
         <th>收款币种</th>
 
-        <th nz-right>
+        <th nzRight>
           转账汇率
           <span
             class="align-middle"
@@ -93,7 +93,7 @@
             nzTheme="outline"
           ></span>
         </th>
-        <th nz-right>
+        <th nzRight>
           手续费
           <span
             class="align-middle"
@@ -106,7 +106,7 @@
 
         <th>用途</th>
         <th [nzSortFn]="sortPayStatus">交易状态</th>
-        <th nz-right>操作</th>
+        <th nzRight>操作</th>
       </tr>
     </thead>
     <tbody>
@@ -134,12 +134,12 @@
         </td>
 
         <td>{{ item.payeeType | payeeTypeTranslate }}</td>
-        <td nz-right>{{ item.payAmount | numberFormat }}</td>
+        <td nzRight>{{ item.payAmount | numberFormat }}</td>
         <td>{{ Currency[item.payCurrency] }}</td>
-        <td nz-right>{{ item.receiveAmount | numberFormat }}</td>
+        <td nzRight>{{ item.receiveAmount | numberFormat }}</td>
         <td>{{ Currency[item.receiveCurrency] }}</td>
-        <td nz-right>{{ item.rate | numberFormat : 4 : 4 }}</td>
-        <td nz-right>{{ item.fee | numberFormat }}</td>
+        <td nzRight>{{ item.rate | numberFormat : 4 : 4 }}</td>
+        <td nzRight>{{ item.fee | numberFormat }}</td>
         <td>{{ item.payType }}</td>
         <td>{{ item.usage }}</td>
         <td>
@@ -148,7 +148,7 @@
           ></div>
           {{ item.payStatus | payStatusTranslate }}
         </td>
-        <td nz-right>
+        <td nzRight>
           <a class="text-[#40a9ff]" (click)="viewDetail(item)">详情</a>
         </td>
       </tr>

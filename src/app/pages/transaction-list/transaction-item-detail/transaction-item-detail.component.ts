@@ -36,7 +36,6 @@ export class TransactionListDetailComponent implements OnInit {
   private _transactionService = inject(TransactionService);
 
   ngOnInit() {
-    console.log(this.nzModalData.transactionId);
     this.loadData();
   }
 

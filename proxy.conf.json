@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://mock.presstime.cn/mock/6819caa75ca065b2e0d451a5",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
