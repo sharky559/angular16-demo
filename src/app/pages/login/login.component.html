@@ -1,0 +1,30 @@
+<div class="flex justify-center items-center h-full bg-[#f0f2f5]">
+  <div class="w-[400px] p-[40px] bg-white rounded-[8px] shadow-sm">
+    <h1 class="text-[#1890ff] text-center mb-[30px]">登录</h1>
+    <form nz-form [formGroup]="loginForm" (ngSubmit)="login()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="请输入用户名">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="username" placeholder="用户名" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="请输入密码">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="密码" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary" [nzBlock]="true" [disabled]="!loginForm.valid">
+            登录
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
