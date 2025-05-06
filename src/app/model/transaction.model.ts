@@ -61,6 +61,24 @@ export interface TransactionItem {
   payStatus: PayStatus;
 }
 
+export interface TransactionItemDetail extends TransactionItem {
+  companyName: string;
+  orgCode: number;
+  paymentMethod: string;
+  /** 附言 */
+  addendum: string;
+  /** 申请部门 */
+  requestDepartment: string;
+  /** 电子凭证号 */
+  eCertificate: string;
+  /** 指令序号*/
+  instructionNo: number;
+  /** 批次文件 */
+  batchDocuments: string;
+  /** 付款方式 */
+  payMethod: string;
+}
+
 export interface FilterParams
   extends BaseQueryParams,
     Pick<TransactionItem, 'payeeAccount' | 'payerAccount' | 'payCurrency'> {
@@ -119,4 +137,33 @@ export const TransactionListMockData = {
       payStatus: PayStatus.pending,
     },
   ],
+};
+
+export const TransactionItemMockData: TransactionItemDetail = {
+  transactionId: 68846297323,
+  payerAccount: '2120120096074781USD',
+  payerName: '见知数据科技有限公司',
+  payerPlatForm: PayPlatform.WorldFirst,
+  payeeAccount: '446037882767',
+  payeeName: 'Nanqing Jiang',
+  payeePlatForm: PayPlatform.ICBC,
+  payeeType: PayeeType.Public,
+  payAmount: 50,
+  payCurrency: Currency.USD,
+  receiveAmount: 50,
+  receiveCurrency: Currency.USD,
+  rate: 1.0,
+  fee: 0,
+  payType: '',
+  usage: '员工报销',
+  payStatus: PayStatus.pending,
+  companyName: '见知数据',
+  orgCode: 5500,
+  paymentMethod: '实时到账',
+  addendum: '--',
+  requestDepartment: '--',
+  eCertificate: '675754DF-DE8F-77FF-8976-D89A1A448C7R',
+  instructionNo: 875599654780,
+  batchDocuments: '--',
+  payMethod: '实时到账'
 };

@@ -21,6 +21,8 @@ import { NumberFormatPipe } from '../../shared/pipe/number-format/number-format.
 import { PayeeTypeTranslatePipe } from '../../shared/pipe/payee-type-translate/payee-type-translate.pipe';
 import { PayPlatformPipe } from '../../shared/pipe/pay-platform/pay-platform.pipe';
 import { PayStatusTranslatePipe } from '../../shared/pipe/pay-status-translate/pay-status-translate.pipe';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+import { TransactionListDetailComponent } from './transaction-item-detail/transaction-item-detail.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
@@ -40,6 +42,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     PayeeTypeTranslatePipe,
     PayPlatformPipe,
     PayStatusTranslatePipe,
+    NzModalModule,
     NzIconModule,
   ],
 })
@@ -60,6 +63,7 @@ export class TransactionListComponent implements OnInit {
 
   private _fb = inject(FormBuilder);
   private _transactionService = inject(TransactionService);
+  private _modal = inject(NzModalService);
 
   constructor() {
     this.transactionConditionsForm = this._fb.group({
@@ -100,6 +104,14 @@ export class TransactionListComponent implements OnInit {
 
   viewDetail(item: TransactionItem): void {
     console.log(item);
+    this._modal.create({
+      nzTitle: '制单详情',
+      nzFooter: null,
+      nzContent: TransactionListDetailComponent,
+      nzData: {
+        transactionId: item.transactionId
+      }
+      });
   }
 
   loadData(): void {

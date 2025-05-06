@@ -5,6 +5,8 @@ import {
   FilterParams,
   TransactionListMockData,
   TransactionItem,
+  TransactionItemDetail,
+  TransactionItemMockData,
 } from '../../model/transaction.model';
 import { Pageable } from '../../model/public.model';
 
@@ -18,6 +20,15 @@ export class TransactionService {
     return of(TransactionListMockData);
     return this._http.get<Pageable<TransactionItem>>('/api/transactionList', {
       params: { ...params },
+    });
+  }
+
+  getTransactionDetail(
+    transactionId: number
+  ): Observable<TransactionItemDetail> {
+    return of(TransactionItemMockData);
+    return this._http.get<TransactionItemDetail>('/api/transactionDetail', {
+      params: { transactionId },
     });
   }
 }

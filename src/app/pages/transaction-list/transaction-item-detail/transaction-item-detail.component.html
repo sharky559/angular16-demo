@@ -1,0 +1,111 @@
+<ng-container *ngIf="transaction">
+  <div class="flex justify-between items-end">
+    <div>
+      <span class="text-[24px] font-medium mr-[4px]">{{
+        transaction.payAmount | numberFormat
+      }}</span>
+      <span class="text-gray-300 mr-[12px]">{{
+        Currency[transaction.payCurrency]
+      }}</span>
+      <span class="rounded-[4px] bg-gray-50 px-[2px] border border-gray-200"
+        >普通转账</span
+      >
+    </div>
+    <div>
+      <div
+        class="inline-block w-[8px] h-[8px] rounded-[50%] bg-yellow-500"
+      ></div>
+      {{ transaction.payStatus | payStatusTranslate }}
+    </div>
+  </div>
+  <div class="my-[12px] px-[16px] rounded-[4px] bg-gray-50 text-gray-500">
+    <span
+      class="align-middle"
+      nz-icon
+      nzType="question-circle"
+      nzTheme="outline"
+    ></span>
+    收款金额：<span class="font-medium text-black">{{
+      transaction.receiveAmount | numberFormat
+    }}</span>
+    {{ Currency[transaction.receiveCurrency] }}， 转账汇率：
+    <span class="font-medium text-black">
+      {{ transaction.rate | numberFormat : 4 : 4 }}</span
+    >， 手续费：<span class="font-medium text-black">{{
+      transaction.fee | numberFormat
+    }}</span>
+    {{ Currency[transaction.receiveCurrency] }}
+  </div>
+
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="12">
+      <app-card cardTitle="付款人信息">
+        <div class="text-[13px] mb-[4px]">{{ transaction.payerName }}</div>
+        <div class="text-gray-400 mb-[4px]">{{ transaction.payerAccount }}</div>
+        <div class="flex gap-[8px]">
+          <img
+            [src]="(transaction.payerPlatForm | payPlatform).icon"
+            class="w-[20px]"
+          />
+          {{ (transaction.payerPlatForm | payPlatform).name }}
+        </div>
+      </app-card>
+    </nz-col>
+
+    <nz-col [nzSpan]="12">
+      <app-card cardTitle="收款人信息">
+        <div class="text-[13px] text-[#40a9ff] mb-[4px]">
+          {{ transaction.payeeName }}
+        </div>
+        <div class="text-gray-400">{{ transaction.payeeAccount }}</div>
+        <div class="flex gap-[8px] mb-[4px]">
+          <img
+            [src]="(transaction.payeePlatForm | payPlatform).icon"
+            class="w-[20px]"
+          />
+          {{ (transaction.payeePlatForm | payPlatform).name }}
+        </div>
+      </app-card>
+    </nz-col>
+  </nz-row>
+  <app-card cardTitle="交易信息">
+    <div class="grid grid-cols-2 gap-[8px]">
+      <div>
+        <div class="text-gray-400 mb-[4px]">企业简称</div>
+        <div>{{ transaction.companyName }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">组织编码</div>
+        <div>{{ transaction.orgCode }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">付款用途</div>
+        <div>{{ transaction.usage }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">付款方式</div>
+        <div>{{ transaction.paymentMethod }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">附言</div>
+        <div>{{ transaction.addendum }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">申请部门</div>
+        <div>{{ transaction.requestDepartment }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">电子凭证号</div>
+        <div>{{ transaction.eCertificate }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">指令序号</div>
+        <div>{{ transaction.instructionNo }}</div>
+      </div>
+      <div>
+        <div class="text-gray-400 mb-[4px]">批次文件</div>
+        <div>{{ transaction.batchDocuments }}</div>
+      </div>
+    </div>
+  </app-card>
+</ng-container>
